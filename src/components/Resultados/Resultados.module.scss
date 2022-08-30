@@ -1,0 +1,26 @@
+.resultadoGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.buttonGroup {
+    display: block;
+    height: 100px;
+    margin-top: 20px;
+
+    &__button {
+        color: #111;
+        font-weight: bold;
+        font-size: 16px;
+        text-transform: uppercase;
+        display: block;
+        min-width: 200px;
+        background-color: #fbc105;
+        padding: 20px;
+        border: none;
+        border-radius: 1px;
+        float: right;
+        cursor: pointer;
+    }
+}

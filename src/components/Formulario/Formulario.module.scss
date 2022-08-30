@@ -1,0 +1,78 @@
+.formGroup {
+
+    display: block;
+    padding: 10px 0;
+
+    label {
+        display: block;
+        font-size: 24px;
+        color: #cccccc;
+        text-align: center;
+    }
+
+    input {
+        display: block;
+        width: 100%;
+        margin: 20px auto;
+        padding: 20px 50px;
+        text-align: center;
+    }
+
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
+    input:focus {
+        border: 3px solid #fbc105;
+    }
+
+    &__inputContainer {
+        display: block;
+        position: relative;
+
+        &__currency,
+        &__cent {
+            display: block;
+            position: absolute;
+            font-size: 16px;
+            top: 22px;
+            color: #aaa;
+        }
+
+        &__currency {
+            left: 20px;
+        }
+
+        &__cent {
+            right: 20px;
+        }
+    }
+    
+}
+
+.buttonGroup {
+    display: block;
+    height: 100px;
+    margin-top: 20px;
+
+    &__button {
+        color: #111;
+        font-weight: bold;
+        font-size: 16px;
+        text-transform: uppercase;
+        display: block;
+        min-width: 200px;
+        background-color: #fbc105;
+        padding: 20px;
+        border: none;
+        border-radius: 1px;
+        float: right;
+        cursor: pointer;
+
+        &--inactive {
+            color:#555;
+            background-color: #fbc205a7;
+        }
+    }
+}

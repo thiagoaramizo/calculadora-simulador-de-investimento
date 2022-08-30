@@ -1,32 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useState } from "react"
+import Formulario from "./components/Formulario/Formulario"
+import styles from './App.module.scss'
+import Titulo from "./components/Titulo/Titulo"
+import Resultados from "./components/Resultados/Resultados"
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const irpf = 0.275
+  const economia = 0.1133
+  const judicial = 0.16
+  const meses = 12
+  const [resIrpf, setResIrpf] = useState(0)
+  const [resEconomia, setResEconomia] = useState(0)
+  const [custo, setCusto] = useState(0)
+  const [avaliacao, setAvaliacao] = useState(0)
+  const [alguel, setAluguel] = useState(0)
+  const [resultado, setResuldado] = useState(false)
+
+
+  const handleSubmit = ( avaliacao: string, alguel: string ) => {
+    setAvaliacao( parseInt(avaliacao, 10) )
+    setAluguel(parseInt(alguel, 10) )
+    setResIrpf( parseInt(alguel, 10)*irpf*meses )
+    setResEconomia( parseInt(alguel, 10)*economia*meses )
+    setCusto( parseInt(avaliacao, 10)*judicial )
+    setResuldado(true)
+  }
+
+  const handleBack = () => {
+    setResuldado(false)
+  }
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div className={styles.app}>
+      <Titulo>Simulador de economia</Titulo>
+      
+      {resultado 
+        ? <Resultados avaliacao={avaliacao} aluguel={alguel} economia={resEconomia} irpf={resIrpf} custo={custo} handleBack={handleBack} /> 
+        : <Formulario handleSubmitParent={handleSubmit}/>
+      }
     </div>
   )
 }
